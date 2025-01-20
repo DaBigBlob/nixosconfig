@@ -27,5 +27,8 @@
         vim
         git
         nix-search-cli
+        sbctl
+        dmidecode
+        usbutils
     ];
 }
