@@ -2,6 +2,8 @@
 { lib, ... } :
 
 rec {
+    imports = [ ../mod ];
+
     networking.hostName = lib.mkForce "sysdebug";
 
     security.sudo.extraRules= [{
