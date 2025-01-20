@@ -12,5 +12,14 @@
 
     services.fwupd.enable = true; # firmware update
 
-    environment.etc."issue".text = "welcome to the machine, bitch\n\n"; # override /etc/issue
+    environment.etc."issue".text = ''
+ __________
+|  YOU RN  |
+|          |
+|  o _[]_  |
+|  |=___/| |
+|  h\\\\ | | |
+|__________|
+
+    '';
 }
