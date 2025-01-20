@@ -1,5 +1,5 @@
 
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     boot = {
@@ -10,10 +10,7 @@
         };
     };
 
-    services = {
-        fwupd.enable = true;
-        fprintd.enable = false;
-        xserver.enable = lib.mkForce false;
-    };
-    
+    services.fwupd.enable = true; # firmware update
+
+    environment.etc."issue".text = "welcome to the machine, bitch\n\n"; # override /etc/issue
 }

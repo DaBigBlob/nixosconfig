@@ -13,10 +13,6 @@
             options = "--delete-older-than 10d";
         };
     };
-
-    services.gvfs.enable = true;
-
-    environment.etc."issue".text = ""; # override /etc/issue
     
     environment.systemPackages = with pkgs; [
         doas-sudo-shim

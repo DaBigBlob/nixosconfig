@@ -9,6 +9,8 @@
         ./hans.nix
         ./software.nix
         ./locale.nix
+        ./services.nix
+        ./security.nix
         ../hom
     ];
 }
