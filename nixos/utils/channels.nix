@@ -1,4 +1,7 @@
 
+# hard pin channels
+# also make channels reproducible
+
 # nix eval --expr "(import ./utils/channels.nix)" --extra-experimental-features nix-command --impure
 # for hash etc check
 

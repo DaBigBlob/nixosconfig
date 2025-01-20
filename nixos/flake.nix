@@ -1,5 +1,7 @@
+
 {
     description = "thin flake shim for NixOS module purity";
+    # so that can be easily replaced with ./archive/configuration.nix as flakes are experimental
 
     inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11"; };
 
