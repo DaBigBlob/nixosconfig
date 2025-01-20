@@ -10,7 +10,6 @@
     {
         nixosConfigurations.sysdebug = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { hostname = self.outputs; };
             modules = [ ./sys/sysdebug.nix ];
         };
     };

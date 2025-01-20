@@ -10,5 +10,5 @@
         ./software.nix
         ./locale.nix
         ./homeman.nix
-    ];  
+    ];
 }
