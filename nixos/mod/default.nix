@@ -11,6 +11,7 @@
         ./locale.nix
         ./services.nix
         ./security.nix
+        ./shell.nix
         ../hom
     ];
 }

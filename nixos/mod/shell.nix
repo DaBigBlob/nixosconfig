@@ -2,8 +2,12 @@
 { pkgs, ... }: 
 
 {
-    programs.fish.enable = true;
-    users.users.hans.shell = pkgs.fish;
+    programs.fish = {
+        enable = true;
+        interactiveShellInit = ''
+            set fish_greeting # Disable greeting
+        '';
+    };
 
     # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
     programs.bash = {
