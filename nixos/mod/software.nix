@@ -14,6 +14,8 @@
         };
     };
 
+    services.gvfs.enable = true;
+
     environment.etc."issue".text = ""; # override /etc/issue
     
     environment.systemPackages = with pkgs; [

@@ -1,10 +1,14 @@
+# also has security stuff
 
-{ ... }:
+{ pkgs, ... }:
 
 {
     users.users.hans = {
         isNormalUser = true;
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [
+            "wheel"
+            "networkmanager"
+        ];
         # packages = with pkgs; [];
     };
 
@@ -17,5 +21,11 @@
           persist = false; # require password 1 time
       }];
   };
+
+    programs.gnupg.agent = {
+        enable = true;
+        pinentryPackage = pkgs.pinentry-curses;
+        enableSSHSupport = false;
+    };
 
 }
