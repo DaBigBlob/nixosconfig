@@ -19,6 +19,7 @@
     environment.etc."issue".text = ""; # override /etc/issue
     
     environment.systemPackages = with pkgs; [
+        doas-sudo-shim
         micro
         rsync
         wget

@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
     boot = {
@@ -13,6 +13,7 @@
     services = {
         fwupd.enable = true;
         fprintd.enable = false;
+        xserver.enable = lib.mkForce false;
     };
     
 }
