@@ -9,6 +9,6 @@
         ./hans.nix
         ./software.nix
         ./locale.nix
-        ./homeman.nix
+        ../hom
     ];
 }
