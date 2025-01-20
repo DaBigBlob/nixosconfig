@@ -3,7 +3,7 @@
 
 rec {
     imports = [
-        (import "${(import ../mod/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
+        (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
         ../mod
     ];
 

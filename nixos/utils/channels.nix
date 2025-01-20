@@ -1,5 +1,5 @@
 
-# nix eval --expr "(import ./mod/channels.nix)" --extra-experimental-features nix-command --impure
+# nix eval --expr "(import ./utils/channels.nix)" --extra-experimental-features nix-command --impure
 # for hash etc check
 
 {
