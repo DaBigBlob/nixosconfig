@@ -6,6 +6,7 @@ rec {
 
     networking.hostName = lib.mkForce "sysdebug";
 
+    security.sudo.enable = lib.mkForce true;
     security.sudo.extraRules= [{
         users = [ "hans" ];
         commands = [{
