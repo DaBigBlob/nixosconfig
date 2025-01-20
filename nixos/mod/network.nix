@@ -10,4 +10,16 @@
             allowedUDPPorts = [];
         };
     };
+
+    services = {
+        avahi = { # mDNS
+            enable = true;
+            nssmdns4 = true;
+            openFirewall = true;
+        };
+
+        printing.enable = true; # CUPS
+
+    };
+
 }

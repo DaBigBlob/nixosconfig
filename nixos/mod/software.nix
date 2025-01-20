@@ -4,7 +4,12 @@
 {
     system.stateVersion = "24.11";
     
-    nix.settings.experimental-features = [ "flakes" "nix-command" ];
+    nix = {
+        optimise.automatic = true;
+        settings.experimental-features = [ "flakes" "nix-command" ];
+    };
+
+    environment.etc."issue".text = ""; # override /etc/issue
     
     environment.systemPackages = with pkgs; [
         micro

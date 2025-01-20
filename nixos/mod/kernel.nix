@@ -10,5 +10,9 @@
         };
     };
 
-    services.fwupd.enable = true;
+    services = {
+        fwupd.enable = true;
+        fprintd.enable = false;
+    };
+    
 }

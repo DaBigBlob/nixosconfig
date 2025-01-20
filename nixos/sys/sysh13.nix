@@ -13,8 +13,8 @@ rec {
     users.users.hans.openssh.authorizedKeys.keys = lib.mkForce [];
     users.users.root.openssh = lib.mkForce users.users.hans.openssh;
     
-    networking.firewall = lib.mkForce {
-        enable = true;
+    networking.firewall = {
+        enable = lib.mkForce true;
         allowedTCPPorts = [];
         allowedUDPPorts = [];
     };
