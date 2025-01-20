@@ -1,16 +1,13 @@
 {
     description = "flake shim for NixOS module purity";
 
-    inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    };
+    inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11"; };
 
-    outputs = { self, nixpkgs, ... }:
-    
-    {
-        nixosConfigurations.sysdebug = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [ ./sys/sysdebug.nix ];
+    outputs = { nixpkgs, ... }: {
+        nixosConfigurations = {
+            nixos = nixpkgs.lib.nixosSystem {modules = [ ./sys/nixos.nix ];};
+            sysdebug = nixpkgs.lib.nixosSystem {modules = [ ./sys/sysdebug.nix ];};
+            sysh13 = nixpkgs.lib.nixosSystem {modules = [ ./sys/sysh13.nix ];};
         };
     };
 }
