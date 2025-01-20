@@ -1,5 +1,5 @@
 
-{ lib, config, ... }:
+{ lib, ... }:
 
 {
     imports = [
@@ -9,10 +9,11 @@
     home-manager.useGlobalPkgs = lib.mkForce true;
     home-manager.useUserPackages = lib.mkForce true;
 
-    home-manager.users.hans = { pkgs, ... }: {
+    home-manager.users.hans = { pkgs, osConfig, ... }: {
         imports = [
             ./software.nix
         ];
-        home.stateVersion = config.system.stateVersion;
+
+        home.stateVersion = osConfig.system.stateVersion;
     };
 }
