@@ -4,7 +4,7 @@
 {
     system.stateVersion = "24.11";
     
-    nix.settings.experimental-features = [];
+    nix.settings.experimental-features = [ "flakes" "nix-command" ];
     
     environment.systemPackages = with pkgs; [
         micro
