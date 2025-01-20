@@ -3,11 +3,16 @@
 
     inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11"; };
 
-    outputs = { nixpkgs, ... }: {
+    outputs = { nixpkgs, ... }:
+
+    let
+        nixSys = file: nixpkgs.lib.nixosSystem {modules = [ file ];};
+    in
+    {
         nixosConfigurations = {
-            nixos = nixpkgs.lib.nixosSystem {modules = [ ./configuration.nix ];};
-            sysdebug = nixpkgs.lib.nixosSystem {modules = [ ./sys/sysdebug.nix ];};
-            sysh13 = nixpkgs.lib.nixosSystem {modules = [ ./sys/sysh13.nix ];};
+            nixos = nixSys ./configuration.nix ;
+            sysdebug = nixSys ./sys/sysdebug.nix ;
+            sysh13 = nixSys ./sys/sysh13.nix ;
         };
     };
 }
