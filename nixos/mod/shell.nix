@@ -3,6 +3,7 @@
 
 {
     programs.fish.enable = true;
+    users.users.hans.shell = pkgs.fish;
 
     # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
     programs.bash = {
