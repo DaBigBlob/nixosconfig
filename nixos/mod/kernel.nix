@@ -14,7 +14,6 @@
 
     environment.etc."issue".text = ''
  __________
-|  YOU RN  |
 |          |
 |  o _[]_  |
 |  |=___/| |
