@@ -2,24 +2,18 @@
 { pkgs, ... }:
 
 let
-    wrapped = pkgs.writeShellScriptBin "hello" ''
-        exec ${pkgs.hello}/bin/hello -t
-    '';
-
-    lam = { pkgs }:
-
-    pkgs.symlinkJoin {
+    val = pkgs.callPackage (p: p.symlinkJoin {
         name = "hello";
         paths = [
-            wrapped
-            pkgs.hello
+            (pkgs.writeShellScriptBin "hello" ''
+                exec ${pkgs.hello}/bin/hello -g "lol1"
+            '')
+            p.hello
         ];
-    };
-
-    val = pkgs.callPackage lam;
+    }) pkgs;
 in
 {
     home.packages = [
-        (val { inherit pkgs; })
+        val
     ];
 }
