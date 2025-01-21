@@ -1,23 +1,16 @@
-
 { pkgs, ... }:
 
-
 let
-    wrapped = pkgs.writeShellScriptBin "pfetch" ''
-        PF_INFO="ascii title os host kernel" exec ${pkgs.pfetch-rs}/bin/pfetch
-    '';
-in
-    {
-        home.packages = [ 
-            # pkgs.symlinkJoin {
-            #     name = "pfetch";
-            #     paths = [
-            #         wrapped
-            #         pkgs.pfetch-rs
-            #     ];
-            # }
-            wrapped
+    wrapped = pkgs.callPackage (p: p.symlinkJoin {
+        name = "pfetch";
+        paths = [
+            (pkgs.writeShellScriptBin "pfetch" ''
+                PF_INFO="ascii title os host" exec ${pkgs.pfetch-rs}/bin/pfetch
+            '')
+            p.pfetch-rs
         ];
-
-        
-    }
+    }) pkgs;
+in
+{
+    home.packages = [ wrapped ];
+}
