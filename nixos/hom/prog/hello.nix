@@ -6,7 +6,7 @@ let
         exec ${pkgs.hello}/bin/hello -t
     '';
 
-    lam = { pkgs, ... }:
+    lam = { pkgs }:
 
     pkgs.symlinkJoin {
         name = "hello";
