@@ -34,8 +34,8 @@
             dnscrypt_servers = true;
             doh_servers = true;
             odoh_servers = true;
-            require_dnssec = false;
-            require_nolog = true;
+            require_dnssec = true;
+            require_nolog = false;
             require_nofilter = true;
             # skip_incompatible = true;
 
