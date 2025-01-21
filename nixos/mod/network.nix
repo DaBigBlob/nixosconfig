@@ -37,6 +37,7 @@
             require_dnssec = false;
             require_nolog = true;
             require_nofilter = true;
+            # skip_incompatible = true;
 
             sources.public-resolvers = {
                 urls = [
