@@ -12,6 +12,6 @@
         ./services.nix
         ./security.nix
         ./shell.nix
-        ../hom
+        ./home.nix
     ];
 }

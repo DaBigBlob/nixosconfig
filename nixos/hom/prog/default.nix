@@ -3,7 +3,6 @@
 
 {
     imports = [
-        ./shell.nix
-        ./prog
+        ./pfetch.nix
     ];
 }

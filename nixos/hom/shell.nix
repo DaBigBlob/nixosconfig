@@ -2,5 +2,8 @@
 { osConfig, ... }: 
 
 {
-    programs.fish.enable = osConfig.programs.fish.enable;
+    programs.fish = {
+        enable = osConfig.programs.fish.enable;
+    };
+
 }
