@@ -13,6 +13,8 @@
             options = "--delete-older-than 10d";
         };
     };
+
+    # nixpkgs.config.allowUnfree = true;
     
     environment.systemPackages = with pkgs; [
         doas-sudo-shim
@@ -33,5 +35,6 @@
         EDITOR = "micro";
         SYSTEMD_EDITOR = "micro";
         VISUAL = "micro";
+        NIXPKGS_ALLOW_UNFREE = 1;
     };
 }
