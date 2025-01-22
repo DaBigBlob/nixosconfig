@@ -13,7 +13,7 @@ let
             set -l normal (set_color normal)
             set -l usercolor (set_color $fish_color_user)
 
-            set -l delim2 (set_color red)"●"(set_color yellow)"●"(set_color green)"●"
+            set -l delim2 (set_color yellow)"●"(set_color green)"●"(set_color red)"●"(if fish_is_root_user; set_color red; else; set_color green; end)" "$USER(set_color blue)"${config.networking.hostName} "(set_color normal)
             set -l delim1 (set_color yellow)"❯"(set_color green)"❯"(set_color red)"❯"
             # If we don't have unicode use a simpler delimiter
             string match -qi "*.utf-8" -- $LANG $LC_CTYPE $LC_ALL; or set delim ">"
@@ -26,7 +26,7 @@ let
                 # We hash the physical PWD and turn that into a color. That means directories (usually) get different colors,
                 # but every directory always gets the same color. It's deterministic.
                 # We use cksum because 1. it's fast, 2. it's in POSIX, so it should be available everywhere.
-                set -l shas (pwd -P | cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string match -ra ..)
+                set -l shas (pwd -P | ${coreutils}/cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string match -ra ..)
                 set -l col 0x$shas[1..3]
 
                 # If the (simplified idea of) luminance is below 120 (out of 255), add some more.
@@ -55,7 +55,7 @@ let
             set -l pwd $cwd(prompt_pwd)$normal
 
             #echo -n -s $prompt_host $cwd $pwd $normal $prompt_status $delim
-            printf "\n%s〈%s〉%s\n%s " $delim2 ${config.networking.hostName} $pwd $delim1
+            ${coreutils}/printf "\n%s%s\n%s " $delim2 $pwd $delim1
         end
     '';
 
@@ -110,7 +110,7 @@ in
             ll = "${ezabin} -l";
             lt = "${ezabin} -aT";
 
-            nix-cleanup = "doas nix-collect-garbage --delete-older-than 1d && doas nix-store --optimise && doas nix-store --gc";
+            nix-clean-consolidate = "doas nix-collect-garbage --delete-older-than 1d && doas nix-store --optimise && doas nix-store --gc";
 
         };
         shellInit = ''
