@@ -1,4 +1,6 @@
 
+# https://nixos.wiki/wiki/Nix_Cookbook#Wrapping_packages
+
 pkgs:
 package:
 name:
