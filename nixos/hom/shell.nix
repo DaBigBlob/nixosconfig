@@ -1,9 +1,9 @@
 
-{ osConfig, ... }: 
+{ ... }: 
 
 {
     programs.fish = {
-        enable = osConfig.programs.fish.enable;
+        enable = true;
     };
 
 }

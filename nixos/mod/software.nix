@@ -18,23 +18,8 @@
     
     environment.systemPackages = with pkgs; [
         doas-sudo-shim
-        micro
-        helix
-        rsync
-        wget
-        curl
-        vim
-        git
-        nix-search-cli
         sbctl
         dmidecode
         usbutils
     ];
-
-    environment.variables = {
-        EDITOR = "micro";
-        SYSTEMD_EDITOR = "micro";
-        VISUAL = "micro";
-        NIXPKGS_ALLOW_UNFREE = 1;
-    };
 }
