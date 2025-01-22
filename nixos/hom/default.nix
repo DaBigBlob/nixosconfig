@@ -7,7 +7,7 @@
         ./prog/pfetch.nix
     ];
 
-    programs = with pkgs; [
+    home.packages = with pkgs; [
         micro
         helix
         rsync
@@ -18,7 +18,7 @@
         nix-search-cli
     ];
 
-    environment.variables = {
+    home.sessionVariables = {
         EDITOR = "micro";
         SYSTEMD_EDITOR = "micro";
         VISUAL = "micro";
