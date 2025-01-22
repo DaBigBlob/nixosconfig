@@ -1,8 +1,14 @@
 
-{ pkgs, ... }: 
+{ pkgs, config, ... }: 
 
+let
+    home_shell = (import ../hom/shell.nix) { inherit pkgs; osConfig = config; };
+in
 {
-    programs.fish.enable = true;
+    programs.fish = home_shell.programs.fish;
+
+    environment.systemPackages = home_shell.home.packages;
+
 
     # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
     programs.bash = {
