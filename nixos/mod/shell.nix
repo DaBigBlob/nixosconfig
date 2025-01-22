@@ -15,15 +15,25 @@ in
         '';
         shellAliases = {
 
-            ls = "${eza} -al";
-            la = "${eza} -a";
+            ls = "${eza}";
+            la = "${eza} -la --follow-symlinks";
             ll = "${eza} -l";
             lt = "${eza} -aT";
 
             nix-cleanup = "doas nix-collect-garbage --delete-older-than 1d && doas nix-store --optimise && doas nix-store --gc";
 
         };
+        shellInit = ''
+            # nothing here for now
+        '';
     };
+
+    environment.systemPackages = with pkgs; [
+        grc
+        fishPlugins.grc
+        fishPlugins.sponge
+        fishPlugins.pisces
+    ];
 
     # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
     programs.bash = {
