@@ -1,5 +1,5 @@
 
-{ pkgs, ... }: 
+{ pkgs, config, ... }: 
 
 let
     ezabin = "${pkgs.eza}/bin/eza --color=always --group-directories-first";
@@ -55,7 +55,7 @@ let
             set -l pwd $cwd(prompt_pwd)$normal
 
             #echo -n -s $prompt_host $cwd $pwd $normal $prompt_status $delim
-            printf "\n%s %s\n%s " $delim2 $pwd $delim1
+            printf "\n%s〈%s〉%s\n%s " $delim2 ${config.networking.hostName} $pwd $delim1
         end
     '';
 
