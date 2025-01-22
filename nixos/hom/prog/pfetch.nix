@@ -1,16 +1,10 @@
 { pkgs, ... }:
 
-let
-    wrapped = pkgs.callPackage (p: p.symlinkJoin {
-        name = "pfetch";
-        paths = [
-            (pkgs.writeShellScriptBin "pfetch" ''
-                PF_INFO="ascii title os host" exec ${pkgs.pfetch-rs}/bin/pfetch
-            '')
-            p.pfetch-rs
-        ];
-    }) pkgs;
-in
 {
-    home.packages = [ wrapped ];
+    home.packages = [ 
+        (
+            (import ../../utils/shellBinPkg.nix) pkgs pkgs.pfetch-rs "pfetch"
+            ''PF_INFO="ascii title os host kernel uptime memory editor wm" exec ${pkgs.pfetch-rs}/bin/pfetch''
+        )
+    ];
 }
