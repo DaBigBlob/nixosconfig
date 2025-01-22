@@ -27,4 +27,10 @@
         dmidecode
         usbutils
     ];
+
+    environment.variables = {
+        EDITOR = "micro";
+        SYSTEMD_EDITOR = "micro";
+        VISUAL = "micro";
+    };
 }
