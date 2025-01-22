@@ -27,7 +27,6 @@
         sbctl
         dmidecode
         usbutils
-        eza
     ];
 
     environment.variables = {

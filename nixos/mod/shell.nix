@@ -2,7 +2,7 @@
 { pkgs, ... }: 
 
 let
-    eza = "${pkgs.eza}/bin/eza --color=always --group-directories-first";
+    ezabin = "${pkgs.eza}/bin/eza --color=always --group-directories-first";
     # cargo = "${pkgs.cargo}/bin/cargo";
     coreutils = "${pkgs.coreutils}/bin";
 in
@@ -15,10 +15,10 @@ in
         '';
         shellAliases = {
 
-            ls = "${eza}";
-            la = "${eza} -la --follow-symlinks";
-            ll = "${eza} -l";
-            lt = "${eza} -aT";
+            ls = "${ezabin}";
+            la = "${ezabin} -la --follow-symlinks";
+            ll = "${ezabin} -l";
+            lt = "${ezabin} -aT";
 
             nix-cleanup = "doas nix-collect-garbage --delete-older-than 1d && doas nix-store --optimise && doas nix-store --gc";
 
@@ -29,6 +29,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+        eza
         grc
         fishPlugins.grc
         fishPlugins.sponge
