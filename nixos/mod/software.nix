@@ -17,6 +17,7 @@
     environment.systemPackages = with pkgs; [
         doas-sudo-shim
         micro
+        helix
         rsync
         wget
         curl
@@ -26,6 +27,7 @@
         sbctl
         dmidecode
         usbutils
+        eza
     ];
 
     environment.variables = {

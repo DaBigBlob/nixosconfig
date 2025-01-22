@@ -1,12 +1,28 @@
 
 { pkgs, ... }: 
 
+let
+    eza = "${pkgs.eza}/bin/eza --color=always --group-directories-first";
+    # cargo = "${pkgs.cargo}/bin/cargo";
+    coreutils = "${pkgs.coreutils}/bin";
+in
 {
     programs.fish = {
         enable = true;
         interactiveShellInit = ''
             set fish_greeting # Disable greeting
+            export GPG_TTY=(${coreutils}/tty) # fixes gnupg password entry
         '';
+        shellAliases = {
+
+            ls = "${eza} -al";
+            la = "${eza} -a";
+            ll = "${eza} -l";
+            lt = "${eza} -aT";
+
+            nix-cleanup = "doas nix-collect-garbage --delete-older-than 1d && doas nix-store --optimise && doas nix-store --gc";
+
+        };
     };
 
     # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
