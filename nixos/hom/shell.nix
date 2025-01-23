@@ -3,7 +3,6 @@
 
 let
     ezabin = "${pkgs.eza}/bin/eza --color=always --group-directories-first";
-    # cargo = "${pkgs.cargo}/bin/cargo";
     coreutils = "${pkgs.coreutils}/bin";
 
     fish_prompt = ''
