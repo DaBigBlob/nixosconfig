@@ -15,6 +15,7 @@
     };
 
     # nixpkgs.config.allowUnfree = true;
+    programs.command-not-found.enable = false;
     
     environment.systemPackages = with pkgs; [
         doas-sudo-shim
