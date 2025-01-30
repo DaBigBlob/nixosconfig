@@ -1,5 +1,7 @@
 # also has security stuff
 
+# if flakes are abandoned, use agenix from utils/channels.nix
+
 { pkgs, ... }:
 
 let
