@@ -5,7 +5,7 @@
 { pkgs, ... }:
 
 let
-    agenix = (builtins.getFlake "github:yaxitech/ragenix?rev=687ee92114bce9c4724376cf6b21235abe880bfa");
+    agenix = (builtins.getFlake "github:yaxitech/ragenix?rev=687ee92114bce9c4724376cf6b21235abe880bfa"); # ragenix
 in
 {
     nixpkgs.overlays = [
