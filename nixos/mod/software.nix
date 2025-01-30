@@ -22,5 +22,6 @@
         sbctl
         dmidecode
         usbutils
+        file
     ];
 }

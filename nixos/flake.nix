@@ -5,10 +5,13 @@
 
     inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11"; };
 
-    outputs = { nixpkgs, ... }:
+    outputs = { nixpkgs, self, ... }:
 
     let
-        nixSys = file: nixpkgs.lib.nixosSystem {modules = [ file ];};
+        nixSys = file: nixpkgs.lib.nixosSystem {
+            specialArgs = { top_flake = self; };
+            modules = [ file ];
+        };
     in
     {
         nixosConfigurations = {

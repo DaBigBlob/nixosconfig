@@ -13,5 +13,6 @@
         ./security.nix
         ./shell.nix
         ./home.nix
+        ./agenix.nix
     ];
 }
