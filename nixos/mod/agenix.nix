@@ -5,15 +5,15 @@
 { pkgs, ... }:
 
 let
-    ragenix = (builtins.getFlake "github:yaxitech/ragenix?rev=687ee92114bce9c4724376cf6b21235abe880bfa");
+    agenix = (builtins.getFlake "github:yaxitech/ragenix?rev=687ee92114bce9c4724376cf6b21235abe880bfa");
 in
 {
     nixpkgs.overlays = [
-        ragenix.overlays.default
+        agenix.overlays.default
     ];
 
     imports = [
-        ragenix.nixosModules.default
+        agenix.nixosModules.default
     ];
 
     environment.systemPackages = [
