@@ -8,6 +8,9 @@
             systemd-boot.enable = true;
             efi.canTouchEfiVariables = true;
         };
+        # kernelParams = [
+        #   "fbcon=font:TER16x32"
+        # ];
     };
 
     services.fwupd.enable = true; # firmware update

@@ -12,12 +12,13 @@ let
             set -l normal (set_color normal)
             set -l usercolor (set_color $fish_color_user)
 
-            set -l delim2 (set_color yellow)"●"(set_color green)"●"(set_color red)"●"(if fish_is_root_user; set_color red; else; set_color green; end)" "$USER(set_color blue)"${osConfig.networking.hostName} "(set_color normal)
-            set -l delim1 (set_color yellow)"❯"(set_color green)"❯"(set_color red)"❯"
-            # If we don't have unicode use a simpler delimiter
-            string match -qi "*.utf-8" -- $LANG $LC_CTYPE $LC_ALL; or set delim ">"
+            set -l decA "○"
+            set -l decB "»"
+            set -l decC "→"
+            # set -l decD "►"
 
-            fish_is_root_user; and set delim "#"
+            set -l delim2 (set_color yellow)$decA(set_color green)$decA(set_color red)$decA(if fish_is_root_user; set_color red; else; set_color green; end)" "$USER(set_color blue)"${osConfig.networking.hostName} "(set_color normal)
+            set -l delim1 (set_color yellow)$decB(set_color green)$decB(set_color red)$decB
 
             set -l cwd (set_color $fish_color_cwd)
             if command -sq cksum
@@ -43,7 +44,7 @@ let
             # Prompt status
             set exit_status_color green
             test $last_status -ne 0; and set exit_status_color red
-            set prompt_status (set_color yellow --bold)"⇢ "(set_color $exit_status_color --bold)"$last_status$normal"; printf "%s\n" $prompt_status
+            set prompt_status (set_color yellow --bold)$decC" "(set_color $exit_status_color --bold)"$last_status$normal"; printf "%s\n" $prompt_status
 
             # Disable PWD shortening by default.
             set -q fish_prompt_pwd_dir_length
@@ -53,7 +54,6 @@ let
             # Shorten pwd if prompt is too long
             set -l pwd $cwd(prompt_pwd)$normal
 
-            #echo -n -s $prompt_host $cwd $pwd $normal $prompt_status $delim
             ${coreutils}/printf "\n%s%s\n%s " $delim2 $pwd $delim1
         end
     '';
