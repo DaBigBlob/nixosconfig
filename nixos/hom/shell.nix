@@ -17,7 +17,7 @@ let
             set -l decC "→"
             # set -l decD "►"
 
-            set -l delim2 (set_color yellow)$decA(set_color green)$decA(set_color red)$decA(if fish_is_root_user; set_color red; else; set_color green; end)" "$USER(set_color blue)"${osConfig.networking.hostName} "(set_color normal)
+            set -l delim2 (set_color yellow)$decA(set_color green)$decA(set_color red)$decA(if fish_is_root_user; set_color red; else; set_color green; end)" "$USER(set_color purple)"${osConfig.networking.hostName} "(set_color normal)
             set -l delim1 (set_color yellow)$decB(set_color green)$decB(set_color red)$decB
 
             set -l cwd (set_color $fish_color_cwd)
