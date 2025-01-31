@@ -16,6 +16,7 @@
         vim
         git
         nix-search-cli
+        ookla-speedtest
     ];
 
     home.sessionVariables = {

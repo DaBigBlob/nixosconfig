@@ -14,7 +14,7 @@
         };
     };
 
-    # nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfree = true;
     programs.command-not-found.enable = false;
     
     environment.systemPackages = with pkgs; [
