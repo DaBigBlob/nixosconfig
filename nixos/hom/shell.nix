@@ -99,6 +99,9 @@ in
         interactiveShellInit = ''
             set fish_greeting # Disable greeting
             export GPG_TTY=(${coreutils}/tty) # fixes gnupg password entry
+
+            theme_gruvbox dark medium
+
             ${fish_prompt}
             ${fish_right_prompt}
         '';
@@ -123,5 +126,6 @@ in
         fishPlugins.grc
         fishPlugins.sponge
         fishPlugins.pisces
+        fishPlugins.gruvbox
     ];
 }
