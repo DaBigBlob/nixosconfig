@@ -126,6 +126,6 @@ in
         fishPlugins.grc
         fishPlugins.sponge
         fishPlugins.pisces
-        fishPlugins.gruvbox
+        # fishPlugins.gruvbox
     ];
 }

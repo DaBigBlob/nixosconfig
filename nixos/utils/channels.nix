@@ -6,14 +6,19 @@
 # for hash etc check
 
 {
+    # nixpkgs = builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/5ef6c425980847c78a80d759abc476e941a9bf42.tar.gz";
+    #     sha256 = "11r8w8p36183cvk8vjg9w8mghgj4spwpb5n6jw31g3vzi0c2ykc7";
+    # };
+
     nixos-hardware = builtins.fetchTarball {
         url = "https://github.com/NixOS/nixos-hardware/archive/cbefe8bde7399864cb100f9dc115edd818cbab3b.tar.gz";
         sha256 = "1n4qcmcmsd9g3g01dhr4351z3jcx3a0k0yfmmjya6b6al4q2qzzq";
     };
 
     home-manager = builtins.fetchTarball {
-        url = "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
-        sha256 = "15k41il0mvmwyv6jns4z8k6khhmb22jk5gpcqs1paym3l01g6abn";
+        url = "https://github.com/nix-community/home-manager/archive/9d3d080aec2a35e05a15cedd281c2384767c2cfe.tar.gz";
+        sha256 = "0c07xj74vsj37d3a8f98i9rhhhr99ckwlp45n40f0qkmigm3pk8s";
     };
 
     # agenix = builtins.fetchTarball {
