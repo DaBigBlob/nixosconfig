@@ -100,7 +100,7 @@ in
             set fish_greeting # Disable greeting
             export GPG_TTY=(${coreutils}/tty) # fixes gnupg password entry
 
-            theme_gruvbox dark medium
+            # theme_gruvbox dark medium
 
             ${fish_prompt}
             ${fish_right_prompt}
