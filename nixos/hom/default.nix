@@ -4,7 +4,7 @@
 {
     imports = [
         ./shell.nix
-        ./prog/pfetch.nix
+        ./prog
     ];
 
     home.packages = with pkgs; [
@@ -16,7 +16,6 @@
         vim
         git
         nix-search-cli
-        ookla-speedtest
     ];
 
     home.sessionVariables = {

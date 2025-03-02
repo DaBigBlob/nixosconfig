@@ -23,5 +23,5 @@
         dmidecode
         usbutils
         file
-    ];
+    ] ++ ((import "../hom/default.nix") { inherit pkgs; }).home.packages;
 }
