@@ -12,5 +12,8 @@
 
     home.packages = with pkgs; [
         ookla-speedtest
-    ];
+    ]
+    ++ lib.optionals osConfig.gui [
+    ]
+    ;
 }
