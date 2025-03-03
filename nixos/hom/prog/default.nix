@@ -1,13 +1,13 @@
 
-{ pkgs, ... }:
+{ lib, pkgs, osConfig, ... }:
 
 {
     imports = [
         ./pfetch.nix
     ]
-    # ++ lib.optional osConfig.gui [
-    #     ./niri.nix
-    # ]
+    ++ lib.optionals osConfig.gui [
+        ./niri.nix
+    ]
     ;
 
     home.packages = with pkgs; [
