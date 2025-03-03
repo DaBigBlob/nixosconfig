@@ -18,3 +18,5 @@
         enableSSHSupport = false;
     };
 }
+
+# ADD SELinux
