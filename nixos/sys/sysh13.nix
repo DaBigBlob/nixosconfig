@@ -16,7 +16,7 @@ rec {
     
     networking.firewall = {
         enable = lib.mkForce true;
-        allowedTCPPorts = [];
-        allowedUDPPorts = [];
+        allowedTCPPorts = lib.mkForce [];
+        allowedUDPPorts = lib.mkForce [];
     };
 }
