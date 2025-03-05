@@ -9,7 +9,8 @@
         settings.experimental-features = [ "flakes" "nix-command" ];
         gc = {
             automatic = true;
-            dates = "daily";
+            dates = "weekly";
+            persistent = true;
             options = "--delete-older-than 10d";
         };
     };
