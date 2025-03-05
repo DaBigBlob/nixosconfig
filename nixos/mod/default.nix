@@ -16,6 +16,5 @@
         ./agenix.nix
         ../utils/options.nix
         ./gui.nix
-        ./power.nix
     ];
 }
