@@ -7,7 +7,8 @@
     ]
     ++ lib.optionals osConfig.gui [
         # ./niri.nix
-        ./hyprland.nix
+        # ./hyprland.nix
+        ./vanilla.nix
     ]
     ;
 
