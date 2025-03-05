@@ -35,7 +35,7 @@
             doh_servers = true;
             odoh_servers = true;
             require_dnssec = true;
-            require_nolog = false; # sad harsh reality
+            require_nolog = false; # sad harsh reality: will disqualify most fast and widely available servers
             require_nofilter = true;
             # skip_incompatible = true;
 
