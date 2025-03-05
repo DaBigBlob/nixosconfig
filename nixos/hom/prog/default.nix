@@ -6,6 +6,7 @@
         ./pfetch.nix
     ]
     ++ lib.optionals osConfig.gui [
+        ./niri.nix
         ./hyprland.nix
     ]
     ;
