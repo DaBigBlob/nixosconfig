@@ -2,9 +2,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.dconf ];
+  home.packages = with pkgs; [
+    alacritty
+    dconf
+  ];
 
-  programs.alacritty.enable = true; # required for the default Hyprland config
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
   # Optional, hint Electron apps to use Wayland:
