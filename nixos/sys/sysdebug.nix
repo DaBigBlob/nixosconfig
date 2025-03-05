@@ -29,4 +29,7 @@ rec {
 
     users.users.root.openssh = users.users.hans.openssh;
 
+    services.spice-vdagentd.enable = true;
+    services.qemuGuest.enable = true;
+
 }
