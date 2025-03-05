@@ -27,6 +27,7 @@
           )
           9)
       );
+      disable_logs = false;
   };
 
   wayland.windowManager.hyprland.plugins = [
