@@ -17,6 +17,7 @@
         git
         nix-search-cli
         dig
+        htop
     ];
 
     home.sessionVariables = {
