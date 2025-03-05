@@ -2,7 +2,7 @@
 { pkgs, ... }:
 
 {
-  programs.kitty.enable = true; # required for the default Hyprland config
+  programs.alacritty.enable = true; # required for the default Hyprland config
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
   # Optional, hint Electron apps to use Wayland:
@@ -13,7 +13,7 @@
     bind =
       [
         "$mod, M, exit,"
-        "$mod, T, exec, kitty"
+        "$mod, T, exec, alacritty"
         ", Print, exec, grimblast copy area"
       ]
       ++ (
