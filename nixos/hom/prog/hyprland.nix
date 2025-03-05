@@ -12,7 +12,8 @@
     "$mod" = "SUPER";
     bind =
       [
-        "$mod, F, exec, firefox"
+        "SUPER, Q, Open my favourite terminal, exec, kitty"
+        "$mod, T, exec, kitty"
         ", Print, exec, grimblast copy area"
       ]
       ++ (
