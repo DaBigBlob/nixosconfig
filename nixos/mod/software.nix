@@ -26,6 +26,8 @@
         sbctl
         dmidecode
         usbutils
+        pciutils
+        lshw
         file
     ] ++ ((import ../hom) { inherit pkgs; }).home.packages;
 }
