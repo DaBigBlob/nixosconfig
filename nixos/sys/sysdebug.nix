@@ -32,4 +32,7 @@ rec {
     services.spice-vdagentd.enable = true;
     services.qemuGuest.enable = true;
 
+    gui = true;
+    mobile = false;
+
 }

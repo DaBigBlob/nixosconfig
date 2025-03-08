@@ -19,4 +19,7 @@ rec {
         allowedTCPPorts = lib.mkForce [];
         allowedUDPPorts = lib.mkForce [];
     };
+
+    gui = true;
+    mobile = true;
 }
