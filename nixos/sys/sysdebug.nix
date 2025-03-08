@@ -33,6 +33,6 @@ rec {
     services.qemuGuest.enable = true;
 
     gui = true;
-    mobile = false;
+    mobile = true;
 
 }
