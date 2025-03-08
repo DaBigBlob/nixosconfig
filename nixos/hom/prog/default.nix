@@ -12,6 +12,7 @@
     ;
 
     home.packages = with pkgs; [
+        delta
         ookla-speedtest
     ]
     ++ lib.optionals osConfig.gui [

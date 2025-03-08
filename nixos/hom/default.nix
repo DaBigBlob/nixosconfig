@@ -18,6 +18,7 @@
         nix-search-cli
         dig
         htop
+        rg
     ];
 
     home.sessionVariables = {
