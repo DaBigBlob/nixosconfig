@@ -13,6 +13,9 @@
       ];
 
       fontconfig = {
+        # check for qualified names using:
+        #   cd /nix/var/nix/profiles/system/sw/share/X11/fonts
+        #   fc-query <YOU_CHOOSE>.ttf | grep '^\s\+family:' | cut -d'"' -f2
         defaultFonts = {
           serif = [  "Liberation Serif" ];
           sansSerif = [ "Liberation Sans" ];
