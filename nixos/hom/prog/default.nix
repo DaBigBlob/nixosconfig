@@ -16,7 +16,7 @@
         ookla-speedtest
     ]
     ++ lib.optionals osConfig.gui [
-      
+        alacritty
     ]
     ;
 }
