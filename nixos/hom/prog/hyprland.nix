@@ -56,7 +56,7 @@
     };
 
     font = {
-      name = "Sans";
+      name = "Mono";
       size = 11;
     };
   };

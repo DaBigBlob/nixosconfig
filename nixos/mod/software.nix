@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
     system.stateVersion = "24.11";
@@ -29,5 +29,10 @@
         pciutils
         lshw
         file
-    ] ++ ((import ../hom) { inherit pkgs; }).home.packages;
+    ]
+    ++ ((import ../hom) { inherit pkgs; }).home.packages
+    ++ lib.optionals config.mobile [
+        pkgs.acpi
+    ]
+    ;
 }
