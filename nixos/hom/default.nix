@@ -18,7 +18,7 @@
         nix-search-cli
         dig
         htop
-        rg
+        ripgrep
     ];
 
     home.sessionVariables = {
