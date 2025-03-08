@@ -5,11 +5,19 @@
 # nix eval --expr "(import ./utils/channels.nix)" --extra-experimental-features nix-command --impure
 # for hash etc check
 
+# usage in imports eg.:
+#   (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
+
 {
     # nixpkgs = builtins.fetchTarball {
     #     url = "https://github.com/NixOS/nixpkgs/archive/5ef6c425980847c78a80d759abc476e941a9bf42.tar.gz";
     #     sha256 = "11r8w8p36183cvk8vjg9w8mghgj4spwpb5n6jw31g3vzi0c2ykc7";
     # };
+
+    nixpkgs-custom = builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/5ef6c425980847c78a80d759abc476e941a9bf42.tar.gz";
+        sha256 = "11r8w8p36183cvk8vjg9w8mghgj4spwpb5n6jw31g3vzi0c2ykc7";
+    };
 
     nixos-hardware = builtins.fetchTarball {
         url = "https://github.com/NixOS/nixos-hardware/archive/cbefe8bde7399864cb100f9dc115edd818cbab3b.tar.gz";

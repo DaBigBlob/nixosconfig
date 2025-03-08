@@ -2,6 +2,11 @@
 { ... }:
 
 {
+    nixpkgs.overlays = [(final: prev: {
+      unstable = (import "${(import ../utils/channels.nix).nixpkgs-custom}") {
+        system = prev.system;
+      };
+    })];
     imports = [
         ../hardware-configuration.nix
         ./kernel.nix
