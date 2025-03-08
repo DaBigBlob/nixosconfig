@@ -18,7 +18,7 @@
       [
         "$mod, M, exit,"
         "$mod, T, exec, alacritty"
-        ", Print, exec, grimblast copy area"
+        # ", Print, exec, grimblast copy area"
       ]
       ++ (
         # workspaces
