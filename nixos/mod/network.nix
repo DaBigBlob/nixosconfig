@@ -2,6 +2,10 @@
 { ... }:
 
 {
+    # prevent wifi degradation
+    hardware.wirelessRegulatoryDatabase = true;
+    boot.extraModprobeConfig = ''options cfg80211 ieee80211_regdom="US"'';
+
     networking = {
         networkmanager.enable = true;
         enableIPv6 = true;
