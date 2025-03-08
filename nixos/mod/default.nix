@@ -3,7 +3,7 @@
 
 {
     nixpkgs.overlays = [(final: prev: {
-      unstable = (import "${(import ../utils/channels.nix).nixpkgs-custom}") {
+      unstable = (import "${(import ../utils/channels.nix).nixpkgs-unstable}") {
         system = prev.system;
       };
     })];
