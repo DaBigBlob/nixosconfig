@@ -33,7 +33,7 @@
 
     xwayland.enabled = false; # i dont care about x11
     misc.vfr = true; # lower the amount of sent frames when nothing is happening on-screen
-    debug.overlay = false; # print debug overlaid over render
+    debug.overlay = true; # print debug overlaid over render
   };
 
   home.pointerCursor = {
