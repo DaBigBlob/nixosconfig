@@ -3,7 +3,7 @@
 
 {
     boot = {
-        kernelPackages = pkgs.unstable.linuxKernel.packages.linux_latest;
+        kernelPackages = pkgs.unstable.linuxKernel.packages.linux_6_13;
         loader = {
             systemd-boot.enable = true;
             efi.canTouchEfiVariables = true;
