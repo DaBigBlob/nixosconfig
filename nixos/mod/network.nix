@@ -5,7 +5,7 @@
     # prevent wifi degradation
     hardware.wirelessRegulatoryDatabase = true;
     boot.extraModprobeConfig = ''options cfg80211 ieee80211_regdom="US"'';
-    networking.networkmanager.wifi.powersave = false;
+    networking.networkmanager.wifi.powersave = true;
 
     networking = {
         networkmanager.enable = true;
