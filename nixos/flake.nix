@@ -5,7 +5,7 @@
 
   outputs = { self, ... }:
   let
-    nixSys = file: (import ./pkgs).lib.nixosSystem {
+    nixSys = file: (import ./pkgs).pkgs.lib.nixosSystem {
       specialArgs = { top_flake = self; };
       modules = [
         file
