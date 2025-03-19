@@ -5,7 +5,6 @@ rec {
     imports = [
         (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
         # (import "${(import ../utils/channels.nix).nixos-hardware}/common/pc/laptop/ssd")
-        # ../mod
     ];
 
     networking.hostName = lib.mkForce "fw13amd";
