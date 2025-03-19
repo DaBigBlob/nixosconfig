@@ -26,6 +26,6 @@ rec {
   pkgs = (import "${(import ../srcs/channels.nix).nixpkgs}") pkgs_args;
 
   module = {pkgs, lib, ...}: {
-    
+    nixpkgs.overlays = pkgs_args.overlays;
   };
 }

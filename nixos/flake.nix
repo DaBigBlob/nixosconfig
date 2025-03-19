@@ -9,7 +9,7 @@
       specialArgs = { top_flake = self; };
       modules = [
         file
-        ./mod
+        ./shim.nix
       ];
     };
   in
