@@ -2,11 +2,6 @@
 { ... }:
 
 {
-    # nixpkgs.overlays = [(final: prev: {
-    #   unstable = (import "${(import ../srcs/channels.nix).nixpkgs-unstable}") {
-    #     system = prev.system;
-    #   };
-    # })];
     imports = [
         ./agenix.nix
         ./kernel.nix
