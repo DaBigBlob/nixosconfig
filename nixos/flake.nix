@@ -28,8 +28,8 @@
   in
   {
     nixosConfigurations = {
-      nixos = nixSys ./sys/debug.nix ;
-      fw13amd = nixSys ./sys/fw13amd.nix ;
+      nixos = nixSys ./hpfl/debug.nix ;
+      fw13amd = nixSys ./hpfl/fw13amd.nix ;
     };
   };
 }
