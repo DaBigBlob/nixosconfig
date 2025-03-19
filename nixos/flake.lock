@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "nixpkgs": {
+    "fpkgs": {
       "locked": {
         "lastModified": 1740865531,
         "narHash": "sha256-h00vGIh/jxcGl8aWdfnVRD74KuLpyY3mZgMFMy7iKIc=",
@@ -19,7 +19,7 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "fpkgs": "fpkgs"
       }
     }
   },

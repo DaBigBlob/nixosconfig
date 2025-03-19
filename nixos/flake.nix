@@ -3,9 +3,9 @@
   description = "thin flake shim for NixOS module purity";
   # so that can be easily replaced with ./archive/configuration.nix as flakes are experimental
 
-  inputs.nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?ref=nixos-24.11&rev=5ef6c425980847c78a80d759abc476e941a9bf42";
+  inputs.fpkgs.url = "git+https://github.com/NixOS/nixpkgs?ref=nixos-24.11&rev=5ef6c425980847c78a80d759abc476e941a9bf42";
 
-  outputs = { nixpkgs, self, ... }:
+  outputs = { fpkgs, self, ... }:
 
   let
     # nixpkgs =  (import (import ./utils/channels.nix).nixpkgs) {
@@ -18,8 +18,12 @@
     #     }
     #   ).nixpkgs.hostPlatform;
     # };
-    nixSys = file: nixpkgs.lib.nixosSystem {
-      specialArgs = { top_flake = self; };
+    nixSys = file: fpkgs.lib.nixosSystem {
+      specialArgs = rec {
+        pkgs = (import ./pkgs);
+        lib = pkgs.lib;
+        top_flake = self;
+      };
       modules = [
         file
         ./mod

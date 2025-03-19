@@ -18,7 +18,6 @@
         ./security.nix
         ./shell.nix
         ./home.nix
-        ./agenix.nix
         ../utils/options.nix
         ./gui.nix
     ];
