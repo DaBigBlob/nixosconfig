@@ -1,5 +1,5 @@
 
-(import "${(import ../srcs/flakes.nix).nixpkgs}") {
+(import "${(import ../srcs/channels.nix).nixpkgs}") {
   system = (
     (import ../hardware-configuration.nix) {
       config = null;
@@ -19,4 +19,4 @@
       # lib.nixosSystem = (import ./flakes.nix) {};
     })
   ];
-}
+} // (import ../srcs/flakes.nix).nixpkgs

@@ -20,11 +20,21 @@
     #     }
     #   ).nixpkgs.hostPlatform;
     # };
-    ppkgs = (import "${(import ./srcs/flakes.nix).nixpkgs}") {};# (import ./srcs/flakes.nix).nixpkgs;
-    nixSys = file: ppkgs.lib.nixosSystem {
-      specialArgs = rec {
-        pkgs = (import ./pkgs);
-        lib = pkgs.lib;
+    # ppkgs = (import "${(import ./srcs/flakes.nix).nixpkgs}") {
+    #   system = (
+    #     (import ./hardware-configuration.nix) {
+    #       config = null;
+    #       lib.mkDefault = a: a;
+    #       pkgs = null;
+    #       modulesPath = null;
+    #     }
+    #   ).nixpkgs.hostPlatform;
+    # } // (import ./srcs/flakes.nix).nixpkgs;
+    # (import ./srcs/channels.nix).nixpkgs;
+    nixSys = file: (import ./pkgs).lib.nixosSystem {
+      specialArgs = {
+        # pkgs = (import ./pkgs);
+        # lib = pkgs.lib;
         top_flake = self;
       };
       modules = [
