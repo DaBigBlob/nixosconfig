@@ -2,11 +2,11 @@
 # hard pin channels
 # also make channels reproducible
 
-# nix eval --expr "(import ./utils/channels.nix)" --extra-experimental-features nix-command --impure
+# nix eval --expr "(import ./srcs/channels.nix)" --extra-experimental-features nix-command --impure
 # for hash etc check
 
 # usage in imports eg.:
-#   (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
+#   (import "${(import ../srsc/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
 
 {
     nixpkgs = builtins.fetchTarball {
