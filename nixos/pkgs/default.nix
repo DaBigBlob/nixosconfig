@@ -14,7 +14,7 @@
   overlays = [
     (final: prev: {
       unstable = (import "${(import ../srcs/channels.nix).nixpkgs-unstable}") {
-        system = prev.system; #"x86_64-linux"; #prev.system;
+        system = prev.system;
       };
     })
 
