@@ -16,7 +16,10 @@
       unstable = (import "${(import ../srcs/channels.nix).nixpkgs-unstable}") {
         system = prev.system; #"x86_64-linux"; #prev.system;
       };
-      # lib.nixosSystem = (import ./flakes.nix) {};
+    })
+
+    (final: prev: {
+      lib = prev.lib // (import ../srcs/flakes.nix).nixpkgs.lib;
     })
   ];
-} // (import ../srcs/flakes.nix).nixpkgs
+} #// (import ../srcs/flakes.nix).nixpkgs
