@@ -13,13 +13,13 @@
         rsync
         wget
         curl
-        vim
+        # vim
         git
         nix-search-cli
         dig
         htop
         ripgrep
-    ];
+    ] ++ [ pkgs.unstable.vim ];
 
     home.sessionVariables = {
         EDITOR = "micro";
