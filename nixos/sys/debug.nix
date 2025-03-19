@@ -2,9 +2,9 @@
 { lib, ... } :
 
 rec {
-    imports = [ ../mod ];
+    # imports = [ ../mod ];
 
-    networking.hostName = lib.mkForce "sysdebug";
+    networking.hostName = lib.mkForce "nixos";
 
     security.sudo.enable = lib.mkForce true;
     security.sudo.extraRules= [{
