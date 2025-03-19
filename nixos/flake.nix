@@ -1,6 +1,6 @@
 
 {
-  description = "thin flake shim for NixOS module purity";
+  description = "thin flake stub for NixOS module purity";
   # so that can be easily replaced with ./archive/configuration.nix as flakes are experimental
 
   outputs = { self, ... }:
