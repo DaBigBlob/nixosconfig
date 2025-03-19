@@ -29,8 +29,8 @@
         sha256 = "0c07xj74vsj37d3a8f98i9rhhhr99ckwlp45n40f0qkmigm3pk8s";
     };
 
-    # agenix = builtins.fetchTarball {
-    #     url = "https://github.com/ryantm/agenix/archive/e600439ec4c273cf11e06fe4d9d906fb98fa097c.tar.gz";
-    #     sha256 = "006ngydiykjgqs85cl19h9klq8kaqm5zs0ng51dnwy7nzgqxzsdr";
-    # };
+    agenix = builtins.fetchTarball {
+        url = "https://github.com/ryantm/agenix/archive/e600439ec4c273cf11e06fe4d9d906fb98fa097c.tar.gz";
+        sha256 = "006ngydiykjgqs85cl19h9klq8kaqm5zs0ng51dnwy7nzgqxzsdr";
+    };
 }
