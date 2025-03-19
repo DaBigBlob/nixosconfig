@@ -18,7 +18,7 @@
     })
 
     (final: prev: {
-      unstable = (import "${(import ../srcs/channels.nix).nixpkgs-unstable}") {
+      unstable = (import "${prev.srcs.channels.nixpkgs-unstable}") {
         system = prev.system;
       };
     })
