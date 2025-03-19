@@ -3,6 +3,7 @@
 
 {
     imports = [
-      ./sys/sysh13.nix # or any from ./sys
+      ./shim.nix
+      ./hpfl/fw13amd.nix # or any from ./hpfl
     ];
 }
