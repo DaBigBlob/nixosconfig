@@ -19,7 +19,7 @@
     })
 
     (final: prev: {
-      lib = prev.lib // (import ../srcs/flakes.nix).nixpkgs.lib;
+      lib = prev.lib // (import ../srcs/flakes.nix).nixpkgs.lib; # remove if removing flakes
     })
   ];
-} #// (import ../srcs/flakes.nix).nixpkgs
+}
