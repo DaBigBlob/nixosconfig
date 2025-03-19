@@ -1,5 +1,5 @@
 
-(import "${(import ../srcs/channels.nix).nixpkgs}") {
+(import "${(import ../srcs/flakes.nix).nixpkgs}") {
   system = (
     (import ../hardware-configuration.nix) {
       config = null;
