@@ -29,7 +29,6 @@
   {
     nixosConfigurations = {
       nixos = nixSys ./sys/debug.nix ;
-      sysh13 = nixSys ./sys/fw13amd.nix ;
       fw13amd = nixSys ./sys/fw13amd.nix ;
     };
   };
