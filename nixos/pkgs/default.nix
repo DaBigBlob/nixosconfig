@@ -8,8 +8,6 @@
       modulesPath = null;
     }
   ).nixpkgs.hostPlatform;
-  
-  config.allowUnfree = true;
 
   overlays = [
     (final: prev: {
