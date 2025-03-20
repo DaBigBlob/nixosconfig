@@ -11,19 +11,11 @@ rec {
 
     overlays = [
       (final: prev: {
-        lib.srcs = {
-          channels = (import ../srcs/channels.nix);
-          flakes = (import ../srcs/flakes.nix);
-        };
-      })
-
-
-      (final: prev: {
-        lib = prev.lib // prev.lib.srcs.flakes.nixpkgs.lib; # remove if removing flakes
+        lib = prev.lib // (import ../srcs/flakes.nix).nixpkgs.lib; # remove if removing flakes
       })
 
       (final: prev: {
-        unstable = (import "${prev.lib.srcs.channels.nixpkgs-unstable}") {
+        unstable = (import "${(import ../srcs/channels.nix).nixpkgs-unstable}") {
           system = prev.system;
         };
       })
