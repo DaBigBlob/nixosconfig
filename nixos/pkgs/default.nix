@@ -20,11 +20,11 @@ rec {
         };
       })
 
-      # (final: prev: {
-      #   lib.util = {
-      #     shellBinPkg = (import ./util/shellBinPkg.nix) final;
-      #   };
-      # })
+      (final: prev: {
+        lib.util = {
+          shellBinPkg = (import ./util/shellBinPkg.nix) final;
+        };
+      })
 
     ];
   };
