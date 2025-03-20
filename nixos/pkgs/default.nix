@@ -21,7 +21,7 @@ rec {
       })
 
       (final: prev: {
-        lib.util = {
+        util = {
           shellBinPkg = (import ./util/shellBinPkg.nix) final;
         };
       })
