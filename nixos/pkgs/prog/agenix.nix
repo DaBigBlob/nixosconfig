@@ -5,7 +5,7 @@
 { ... }:
 
 let
-    agenix = (import ../srcs/flakes.nix).ragenix;
+    agenix = (import ../../srcs/flakes.nix).ragenix;
 in
 {
     nixpkgs.overlays = [
