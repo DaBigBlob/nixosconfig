@@ -25,6 +25,7 @@ rec {
           shellBinPkg = (import ./util/shellBinPkg.nix) final;
         };
       })
+      
     ];
   };
 
