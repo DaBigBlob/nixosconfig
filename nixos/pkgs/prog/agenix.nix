@@ -1,8 +1,8 @@
 # also has security stuff
 
-# if flakes are abandoned, use agenix from utils/channels.nix
+# if flakes are abandoned, use agenix from srcs/channels.nix
 
-{ pkgs, ... }:
+{ ... }:
 
 let
     agenix = (import ../srcs/flakes.nix).ragenix;
@@ -16,8 +16,8 @@ in
         agenix.nixosModules.default
     ];
 
-    environment.systemPackages = [
-        pkgs.agenix
-    ];
+    # environment.systemPackages = [
+    #     pkgs.agenix
+    # ];
 
 }

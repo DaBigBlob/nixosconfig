@@ -19,6 +19,12 @@ rec {
           system = prev.system;
         };
       })
+
+      (final: prev: {
+        lib.util = {
+          shellBinPkg = (import ./util/shellBinPkg.nix) final;
+        };
+      })
     ];
   };
 
@@ -26,5 +32,8 @@ rec {
 
   module = {pkgs, lib, ...}: {
     nixpkgs.overlays = pkgs_args.overlays;
+    imports = [
+      ./prog/agenix.nix
+    ];
   };
 }

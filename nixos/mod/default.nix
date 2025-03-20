@@ -3,7 +3,6 @@
 
 {
     imports = [
-        ./agenix.nix
         ./kernel.nix
         ./network.nix
         ./hans.nix
