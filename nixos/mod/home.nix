@@ -3,7 +3,7 @@
 
 {
     imports = [
-        (import "${(import ../utils/channels.nix).home-manager}/nixos")
+        (import "${(import ../srcs/channels.nix).home-manager}/nixos")
     ];
  
     home-manager.useGlobalPkgs = lib.mkForce true;
