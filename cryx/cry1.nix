@@ -1,7 +1,7 @@
 
 rec {
   hutil = rec {
-    files_to_attr_list = post_import: files: builtins.map (
+    files_to_named_attr_list = post_import: files: builtins.map (
       file: {
         name = builtins.elemAt (
           builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
@@ -11,7 +11,7 @@ rec {
     ) files;
 
     files_to_named_attr = post_import: files: builtins.listToAttrs (
-      files_to_attr_list post_import files
+      files_to_named_attr_list post_import files
     );
 
     deep_attr_merge = attr1: attr2: null;
@@ -22,7 +22,7 @@ rec {
 
     unname_named_attr = attr: attr_list_to_attr (a: a) (builtins.attrValues attr);
 
-    files_to_attr = post_import: files: attr_list_to_attr (a: a.value) (files_to_attr_list post_import files);
+    files_to_attr = post_import: files: attr_list_to_attr (a: a.value) (files_to_named_attr_list post_import files);
 
     himport = args: files: files_to_attr (a: a args) files;
   };
@@ -40,5 +40,4 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem6 = hutil.deep_attr_merge {a.b.c = 2;} {a.f.c = 4;};
 }
