@@ -1,18 +1,20 @@
 
 rec {
-  files_to_attr_list = post_import: files: builtins.map (
-    file: {
-      name = builtins.elemAt (
-        builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
-      ) 0;
-      value = post_import (import file);
-    }
-  ) files;
-  files_to_named_attr = post_import: files: builtins.listToAttrs (files_to_attr_list post_import files);
-  attr_list_to_attr = attr_mutation: attr_list: builtins.foldl' (acc: set: acc // (attr_mutation set)) {} attr_list;
-  unname_named_attr = attr: attr_list_to_attr (a: a) (builtins.attrValues attr);
-  files_to_attr = post_import: files: attr_list_to_attr (a: a.value) (files_to_attr_list post_import files);
-  himport = args: files: files_to_attr (a: a args) files;
+  hutil = rec {
+    files_to_attr_list = post_import: files: builtins.map (
+      file: {
+        name = builtins.elemAt (
+          builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
+        ) 0;
+        value = post_import (import file);
+      }
+    ) files;
+    files_to_named_attr = post_import: files: builtins.listToAttrs (files_to_attr_list post_import files);
+    attr_list_to_attr = attr_mutation: attr_list: builtins.foldl' (acc: set: acc // (attr_mutation set)) {} attr_list;
+    unname_named_attr = attr: attr_list_to_attr (a: a) (builtins.attrValues attr);
+    files_to_attr = post_import: files: attr_list_to_attr (a: a.value) (files_to_attr_list post_import files);
+    himport = args: files: files_to_attr (a: a args) files;
+  };
 
   # dem2 = files_to_named_attr (a: a) [
   #   ./demo.nix
@@ -23,7 +25,7 @@ rec {
   #   ./demo.nix
   #   ./demo2.nix
   # ];
-  dem5 = himport 4 [
+  dem5 = hutil.himport 4 [
     ./hdem1.nix
     ./hdem2.nix
   ];
