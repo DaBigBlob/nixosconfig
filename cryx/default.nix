@@ -26,6 +26,5 @@ rec {
   dem5 = himport 4 [
     ./hdem1.nix
     ./hdem2.nix
-    ../hdem2.nix
   ];
 }
