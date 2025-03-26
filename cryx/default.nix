@@ -16,15 +16,15 @@ rec {
     himport = args: files: files_to_attr (a: a args) files;
   };
 
-  # dem2 = files_to_named_attr (a: a) [
-  #   ./demo.nix
-  #   ./demo2.nix
-  # ];
-  # dem3 = unname_named_attr dem2;
-  # dem4 = files_to_attr (a: a) [
-  #   ./demo.nix
-  #   ./demo2.nix
-  # ];
+  dem2 = hutil.files_to_named_attr (a: a) [
+    ./demo.nix
+    ./demo2.nix
+  ];
+  dem3 = hutil.unname_named_attr dem2;
+  dem4 = hutil.files_to_attr (a: a) [
+    ./demo.nix
+    ./demo2.nix
+  ];
   dem5 = hutil.himport 4 [
     ./hdem1.nix
     ./hdem2.nix
