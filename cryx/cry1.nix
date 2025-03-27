@@ -10,8 +10,15 @@ rec {
       }
     ) files;
 
-    files_to_named_attr = post_import: files: builtins.listToAttrs (
-      files_to_named_attr_list post_import files
+    files_to_named_attr = files: builtins.listToAttrs (
+      builtins.map (
+        file: {
+          name = builtins.elemAt (
+            builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
+          ) 0;
+          value = import file;
+        }
+      )
     );
 
     deep_attr_merge = attr1: attr2: null;
