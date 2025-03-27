@@ -5,11 +5,25 @@
 
   outputs = { self, ... }:
   let
-    nixSys = file: (import ./nixpkgs.nix).pkgs.lib.nixosSystem {
+    nixpkgs = import ./nixpkgs;
+    nixSys = file: (
+      nixpkgs.pkgs {
+        system = (
+          (import ./hardware-configuration.nix) {
+            config = null;
+            lib.mkDefault = a: a;
+            pkgs = null;
+            modulesPath = null;
+          }
+        ).nixpkgs.hostPlatform;
+        overlays = nixpkgs.overlays;
+      }
+    ).lib.nixosSystem {
       specialArgs = { top_flake = self; };
       modules = [
         file
         ./hile
+        ./hardware-configuration.nix
       ];
     };
   in
