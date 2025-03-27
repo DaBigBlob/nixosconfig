@@ -1,9 +1,6 @@
 
 rec {
   hutil = rec {
-    # files_to_attr_list = post_import: files: builtins.map (
-    #   file: post_import (import file)
-    # ) files;
 
     attr_list_to_attr = attr_list: builtins.zipAttrsWith (
       name: values:
@@ -25,9 +22,25 @@ rec {
       }
     ) files;
 
-    named_attr_list_to_attr = attr_mutation: attr_list: builtins.foldl' (
-      acc: set: acc // (attr_mutation set)
-    ) {} attr_list;
+    named_attr_to_attr = named_attr: attr_list_to_attr (builtins.attrValues named_attr);
+
+    himport_mut = post_import: files:
+      attr_list_to_attr
+      (
+        builtins.map
+        (named_attr: named_attr.value)
+        (files_to_named_attr_list post_import files)
+      )
+    ;
+
+    himport = args: files: himport_mut (fn: fn args) files;
+
+    fimport_mut = post_import: files:
+      builtins.listToAttrs
+        (files_to_named_attr_list post_import files)
+    ;
+
+    fimport = args: files: fimport_mut (fn: fn args) files;
 
   };
 
@@ -50,4 +63,8 @@ rec {
   #   {a.f.c = 4;}
   # ];
   # dem7 = builtins.zipAttrsWith (n: v: {n=n;v=v;}) [ {a=1;} {b=2;} ];
+  dem8 = hutil.fimport 5 [
+    ./hdem1.nix
+    ./hdem2.nix
+  ];
 }
