@@ -11,10 +11,13 @@
         };
       })
 
-      (final: prev: {
+      (final: prev: rec {
         util = {
-          shellBinPkg = (import ./util/shellBinPkg.nix) final;
-        };
+          fileToNamedAttrs = (import ./util/fileToNamedAttrs.nix) final;
+        }
+        // util.fileToNamedAttrs [
+          ./util/shellBinPkg.nix
+        ];
       })
 
     ];
