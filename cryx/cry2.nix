@@ -5,16 +5,29 @@ rec {
       file: post_import (import file)
     ) files;
 
-    attr_list_merge = attr_list: builtins.zipAttrsWith (
+    attr_list_to_attr = attr_list: builtins.zipAttrsWith (
       name: values:
         if (builtins.isAttrs (builtins.elemAt values 0)) then (
-          attr_list_merge values
+          attr_list_to_attr values
         ) else
         if (builtins.isList (builtins.elemAt values 0)) then (
           builtins.concatLists values
         ) else
           builtins.elemAt values 0
     ) attr_list;
+
+    files_to_named_attr_list = post_import: files: builtins.map (
+      file: {
+        name = builtins.elemAt (
+          builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
+        ) 0;
+        value = post_import (import file);
+      }
+    ) files;
+
+    named_attr_list_to_attr = attr_mutation: attr_list: builtins.foldl' (
+      acc: set: acc // (attr_mutation set)
+    ) {} attr_list;
 
   };
 
@@ -31,7 +44,7 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem6 = hutil.attr_list_merge [
+  dem6 = hutil.attr_list_to_attr [
     {a.b.c = [2];}
     {a.b.c = [2];}
     {a.f.c = 4;}
