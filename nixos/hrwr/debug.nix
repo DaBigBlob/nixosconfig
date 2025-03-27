@@ -2,7 +2,7 @@
 { lib, ... } :
 
 rec {
-  imports = [ ./hile/hwshim.nix ];
+  # imports = [ ./hile/hwshim.nix ];
 
   networking.hostName = lib.mkForce "nixos";
 

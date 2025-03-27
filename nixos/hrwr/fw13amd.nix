@@ -3,7 +3,6 @@
 
 rec {
   imports = [
-    ./hile/hwshim.nix
     (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
     # (import "${(import ../utils/channels.nix).nixos-hardware}/common/pc/laptop/ssd")
   ];
