@@ -14,6 +14,11 @@
     sha256 = "11r8w8p36183cvk8vjg9w8mghgj4spwpb5n6jw31g3vzi0c2ykc7";
   };
 
+  nixpkgs-darwin = builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/d02d88f8de5b882ccdde0465d8fa2db3aa1169f7.tar.gz";
+    sha256 = "11r8w8p36183cvk8vjg9w8mghgj4spwpb5n6jw31g3vzi0c2ykc7";
+  };
+
   nixpkgs-unstable = builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/26c186cbd208bb6f980d2bad84cd92057425d9f0.tar.gz";
     sha256 = "1j60yxabnl97xmz2cjgykr8j3mngkq10dn8492s60wshjpx91xvd";
