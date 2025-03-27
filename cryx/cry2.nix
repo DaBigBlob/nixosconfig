@@ -1,9 +1,9 @@
 
 rec {
   hutil = rec {
-    files_to_attr_list = post_import: files: builtins.map (
-      file: post_import (import file)
-    ) files;
+    # files_to_attr_list = post_import: files: builtins.map (
+    #   file: post_import (import file)
+    # ) files;
 
     attr_list_to_attr = attr_list: builtins.zipAttrsWith (
       name: values:
@@ -44,10 +44,10 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem6 = hutil.attr_list_to_attr [
-    {a.b.c = [2];}
-    {a.b.c = [2];}
-    {a.f.c = 4;}
-  ];
+  # dem6 = hutil.attr_list_to_attr [
+  #   {a.b.c = [2];}
+  #   {a.b.c = [2];}
+  #   {a.f.c = 4;}
+  # ];
   # dem7 = builtins.zipAttrsWith (n: v: {n=n;v=v;}) [ {a=1;} {b=2;} ];
 }
