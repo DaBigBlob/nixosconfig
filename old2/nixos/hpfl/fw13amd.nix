@@ -5,9 +5,10 @@ rec {
     imports = [
         (import "${(import ../utils/channels.nix).nixos-hardware}/framework/13-inch/7040-amd")
         # (import "${(import ../utils/channels.nix).nixos-hardware}/common/pc/laptop/ssd")
+        ../mod
     ];
 
-    networking.hostName = lib.mkForce "fw13amd";
+    networking.hostName = lib.mkForce "sysh13";
 
     services.openssh.enable = lib.mkForce false;
     users.users.hans.openssh.authorizedKeys.keys = lib.mkForce [];
