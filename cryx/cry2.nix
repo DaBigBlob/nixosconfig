@@ -72,7 +72,7 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem9 = hutil.himport 5 [
+  dem9 = hutil.himport {} [
     ./hdem1.nix
     ./hdem2.nix
   ];
