@@ -17,7 +17,7 @@ rec {
           builtins.head values
         ) else
         # error
-          builtins.abort "CRYNIX: Cannot merge: ${values}"
+          builtins.throw "CRYNIX: Cannot merge: [${builtins.toString values}]"
     ) attr_list;
 
     files_to_named_attr_list = post_import: files: builtins.map (
