@@ -12,6 +12,7 @@ rec {
         if (builtins.all builtins.isList values) then (
           builtins.concatLists values
         ) else
+        # only elem -> elem
         if (builtins.length values) == 1 then (
           builtins.head values
         ) else
