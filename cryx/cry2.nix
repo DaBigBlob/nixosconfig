@@ -22,9 +22,9 @@ rec {
 
     files_to_named_attr_list = post_import: files: builtins.map (
       file: {
-        name = builtins.elemAt (
+        name = builtins.head (
           builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
-        ) 0;
+        );
         value = post_import (import file);
       }
     ) files;
@@ -72,10 +72,10 @@ rec {
   #   {a.f.c = 4;}
   # ];
   # dem7 = builtins.zipAttrsWith (n: v: {n=n;v=v;}) [ {a=1;} {b=2;} ];
-  # dem8 = hutil.fimport 5 [
-  #   ./hdem1.nix
-  #   ./hdem2.nix
-  # ];
+  dem8 = hutil.fimport 3 [
+    ./hdem1.nix
+    ./hdem2.nix
+  ];
   dem9 = hutil.himport 3 [
     ./hdem1.nix
     ./hdem2.nix
