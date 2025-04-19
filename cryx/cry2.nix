@@ -4,13 +4,16 @@ rec {
 
     attr_list_to_attr = attr_list: builtins.zipAttrsWith (
       name: values:
-        if (builtins.isAttrs (builtins.elemAt values 0)) then (
+        # attr + attr -> recursive this
+        if (builtins.all builtins.isAttrs values) then ( 
           attr_list_to_attr values
         ) else
-        if (builtins.isList (builtins.elemAt values 0)) then (
+        # list + list -> concat
+        if (builtins.all builtins.isList values) then (
           builtins.concatLists values
         ) else
-          builtins.elemAt values 0
+        # error
+          throw "CRYNIX: Cannot merge: ${values}"
     ) attr_list;
 
     files_to_named_attr_list = post_import: files: builtins.map (
@@ -33,14 +36,16 @@ rec {
       )
     ;
 
-    himport = args: files: himport_mut (fn: fn args) files;
+    himport = args: files:
+      himport_mut (fn: fn args) files;
 
     fimport_mut = post_import: files:
       builtins.listToAttrs
         (files_to_named_attr_list post_import files)
     ;
 
-    fimport = args: files: fimport_mut (fn: fn args) files;
+    fimport = args: files:
+      fimport_mut (fn: fn args) files;
 
   };
 
@@ -63,7 +68,11 @@ rec {
   #   {a.f.c = 4;}
   # ];
   # dem7 = builtins.zipAttrsWith (n: v: {n=n;v=v;}) [ {a=1;} {b=2;} ];
-  dem8 = hutil.fimport 5 [
+  # dem8 = hutil.fimport 5 [
+  #   ./hdem1.nix
+  #   ./hdem2.nix
+  # ];
+  dem9 = hutil.himport 5 [
     ./hdem1.nix
     ./hdem2.nix
   ];
