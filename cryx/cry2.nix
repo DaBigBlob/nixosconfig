@@ -17,7 +17,7 @@ rec {
           builtins.head values
         ) else
         # error
-          throw "CRYNIX: Cannot merge: ${values}"
+          builtins.abort "CRYNIX: Cannot merge: ${values}"
     ) attr_list;
 
     files_to_named_attr_list = post_import: files: builtins.map (
@@ -76,7 +76,7 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem9 = hutil.himport 1 [
+  dem9 = hutil.himport 3 [
     ./hdem1.nix
     ./hdem2.nix
   ];
