@@ -12,6 +12,9 @@ rec {
         if (builtins.all builtins.isList values) then (
           builtins.concatLists values
         ) else
+        if (builtins.length values) == 1 then (
+          builtins.head values
+        ) else
         # error
           throw "CRYNIX: Cannot merge: ${values}"
     ) attr_list;
@@ -72,7 +75,7 @@ rec {
   #   ./hdem1.nix
   #   ./hdem2.nix
   # ];
-  dem9 = hutil.himport {} [
+  dem9 = hutil.himport 1 [
     ./hdem1.nix
     ./hdem2.nix
   ];
