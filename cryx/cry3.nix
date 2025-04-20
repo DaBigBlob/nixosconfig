@@ -81,6 +81,5 @@ rec {
   dem9 = hutil.himport 3 [
     ./hdem1.nix
     ./hdem2.nix
-    ./hdem2.nix
   ];
 }
