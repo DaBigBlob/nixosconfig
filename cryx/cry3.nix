@@ -2,8 +2,13 @@
 rec {
   hutil = rec {
 
+    # [{a=av; ...} {b=bv; ...} ...] -> {a=av; b=bv; ...}
     attr_list_to_attr = attr_list: builtins.zipAttrsWith (
       name: values:
+        # only elem -> elem
+        if (builtins.length values) == 1 then (
+          builtins.head values
+        ) else
         # attr + attr -> recursive this
         if (builtins.all builtins.isAttrs values) then ( 
           attr_list_to_attr values
@@ -12,14 +17,11 @@ rec {
         if (builtins.all builtins.isList values) then (
           builtins.concatLists values
         ) else
-        # only elem -> elem
-        if (builtins.length values) == 1 then (
-          builtins.head values
-        ) else
         # error
           builtins.throw "CRYNIX: Cannot merge: [${builtins.toString values}]"
     ) attr_list;
 
+    # [./path/file_name1.nix ./path/file_name2.nix ...] -> [{name=file_name1; value=?;} {name=file_name2; value=?;}...]
     files_to_named_attr_list = post_import: files: builtins.map (
       file: {
         name = builtins.head (
