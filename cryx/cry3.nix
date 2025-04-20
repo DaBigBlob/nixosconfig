@@ -82,4 +82,5 @@ rec {
     ./hdem1.nix
     ./hdem2.nix
   ];
+  dem10 = hutil.attr_list_to_attr [dem8 dem9];
 }
