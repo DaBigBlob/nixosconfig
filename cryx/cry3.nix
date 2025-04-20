@@ -21,14 +21,14 @@ rec {
           builtins.throw "CRYNIX: Cannot merge: [${builtins.toString values}]"
     ) attr_list;
 
-    # [./path/file_name1.nix ./path/file_name2.nix ...] -> [{name=file_name1; value=?;} {name=file_name2; value=?;}...]
-    files_to_named_attr_list = post_import: files: builtins.map (
-      file: {
+    # [./path/file_name1.nix ./path/file_name2.nix ...] -> [{file_name1=?} {file_name2=?;}...]
+    files_to_attr_list = post_import: files: builtins.map (
+      file: builtins.listToAttrs [{
         name = builtins.head (
           builtins.match "([[:alnum:]_]+).nix" (builtins.baseNameOf file)
         );
-        value = post_import (import file);
-      }
+        value = post_import (builtins.import file);
+      }]
     ) files;
 
     named_attr_to_attr = named_attr: attr_list_to_attr (builtins.attrValues named_attr);
@@ -37,8 +37,8 @@ rec {
       attr_list_to_attr
       (
         builtins.map
-        (named_attr: named_attr.value)
-        (files_to_named_attr_list post_import files)
+        (file: post_import (builtins.import file))
+        files
       )
     ;
 
@@ -46,8 +46,8 @@ rec {
       himport_mut (fn: fn args) files;
 
     fimport_mut = post_import: files:
-      builtins.listToAttrs
-        (files_to_named_attr_list post_import files)
+      attr_list_to_attr
+        (files_to_attr_list post_import files)
     ;
 
     fimport = args: files:
