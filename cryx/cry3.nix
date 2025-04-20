@@ -31,8 +31,6 @@ rec {
       }]
     ) files;
 
-    named_attr_to_attr = named_attr: attr_list_to_attr (builtins.attrValues named_attr);
-
     himport_mut = post_import: files:
       attr_list_to_attr
       (
