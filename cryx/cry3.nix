@@ -31,6 +31,7 @@ rec {
       }]
     ) files;
 
+    # [./path/file_name1.nix ./path/file_name2.nix ...] -> {file_name1attr1=?; file_name1attr2=?; ...; file_name2attr1=?; ...}
     himport_mut = post_import: files:
       attr_list_to_attr
       (
@@ -40,13 +41,14 @@ rec {
       )
     ;
 
-    himport = args: files:
-      himport_mut (fn: fn args) files;
-
+    # [./path/file_name1.nix ./path/file_name2.nix ...] -> {file_name1={file_name1attr1=?; file_name1attr2=?; ...;}; file_name2={file_name2attr1=?; ...}; ...}
     fimport_mut = post_import: files:
       attr_list_to_attr
         (files_to_attr_list post_import files)
     ;
+
+    himport = args: files:
+      himport_mut (fn: fn args) files;
 
     fimport = args: files:
       fimport_mut (fn: fn args) files;
