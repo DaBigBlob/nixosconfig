@@ -18,7 +18,7 @@ rec {
           builtins.concatLists values
         ) else
         # error
-          builtins.throw "CRYNIX: Cannot merge: [${builtins.toString values}]"
+          builtins.throw "hutil: Cannot merge: [${builtins.toString values}]"
     ) attr_list;
 
     # [./path/file_name1.nix ./path/file_name2.nix ...] -> [{file_name1=?} {file_name2=?;}...]
